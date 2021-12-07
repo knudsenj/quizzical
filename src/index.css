@@ -74,13 +74,19 @@ button:active, input[type="radio"] + label:active {
 /* #region quiz */
 
 .quiz {
-  max-width: 500px;
+  max-width: 530px;
+  padding: 15px;
 }
 
 .quiz--actions {
   display: flex;
+  align-items: center;
   justify-content: center;
   margin-top: 30px;
+}
+
+.quiz--results {
+  margin-right: 15px;
 }
 
 .quiz--button {
