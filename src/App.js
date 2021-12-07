@@ -2,7 +2,7 @@ import { useState } from "react"
 import Quiz from "./components/Quiz";
 
 function App() {
-  const [hasStarted, setHasStarted] = useState(false);
+  const [hasStarted, setHasStarted] = useState(true);
 
   function startQuiz() {
     setHasStarted(true);
