@@ -23,16 +23,16 @@ main {
   background-repeat: no-repeat;
 }
 
-button {
+button, input[type="radio"] + label {
   font-family: Inter, sans-serif;
   font-weight: 500;
   cursor: pointer;
-  box-shadow: 1px 1px 4px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-button:active {
+button:active, input[type="radio"] + label:active {
   transform: translate(1px, 1px);
-  box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 /* #region start screen */
@@ -68,12 +68,13 @@ button:active {
 /* #region quiz */
 
 .quiz {
-  max-width: 400px;
+  max-width: 500px;
 }
 
 .quiz--actions {
   display: flex;
   justify-content: center;
+  margin-top: 30px;
 }
 
 .quiz--button {
@@ -87,3 +88,49 @@ button:active {
 }
 
 /* #endregion quiz */
+
+/* #region question */
+
+.question {
+  margin: 15px 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #DBDEF0;
+}
+
+.answers {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -5px;
+}
+
+.answer {
+  margin: 5px;
+}
+
+.answer input {
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.answer label {
+  display: block;
+  padding: 5px 20px;
+  color: #293264;
+  background: white;
+  border: 1px solid #4D5B9E;
+  border-radius: 8px;
+  -webkit-user-select: none;    /* Safari */
+  -webkit-touch-callout: none;  /* iOS Safari */
+  -khtml-user-select: none;     /* Konqueror HTML */
+  -ms-user-select: none;        /* Internet Explorer/Edge */
+  -moz-user-select: none;       /* Old versions of Firefox */
+   user-select: none;           /* Non-prefixed version*/
+}
+
+.answer input:checked + label {
+  background: #D6DBF5;
+  border: 1px solid #D6DBF5;
+}
+
+/* #endregion question */

@@ -8,17 +8,14 @@ function Quiz() {
   const [questions, setQuestions] = useState([])
 
   useEffect(() => {
-    setQuestions(mockData.results.map((item) => {
-      const index = Math.random() * item.incorrect_answers.length;
-      const answers = item.incorrect_answers.slice().sort(() => Math.random() - 0.5);
-      answers.splice(index, 0, item.answer)
-      return {
-        id: nanoid(),
-        question: item.question,
-        correctIndex: index,
-        answers: answers,
-      }
-    }))
+    setQuestions(mockData.results.map(item => ({
+      id: nanoid(),
+      question: item.question,
+      correctAnswer: item.correct_answer,
+      answers: [...item.incorrect_answers, item.correct_answer]
+        .sort(() => Math.random() - 0.5)
+        .map(answer => ({id: nanoid(), value: answer})),
+    })))
   }, []);
 
   return (
@@ -26,6 +23,7 @@ function Quiz() {
       { questions.map(item => (
         <Question 
           key={item.id}
+          id={item.id}
           question={item.question} 
           answers={item.answers}
         />
