@@ -28,6 +28,12 @@ button, input[type="radio"] + label {
   font-weight: 500;
   cursor: pointer;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  -webkit-user-select: none;    /* Safari */
+  -webkit-touch-callout: none;  /* iOS Safari */
+  -khtml-user-select: none;     /* Konqueror HTML */
+  -ms-user-select: none;        /* Internet Explorer/Edge */
+  -moz-user-select: none;       /* Old versions of Firefox */
+   user-select: none;           /* Non-prefixed version*/
 }
 
 button:active, input[type="radio"] + label:active {
@@ -87,6 +93,10 @@ button:active, input[type="radio"] + label:active {
   font-weight: 600;
 }
 
+.quiz--button:disabled {
+  opacity: 0.5
+}
+
 /* #endregion quiz */
 
 /* #region question */
@@ -120,17 +130,28 @@ button:active, input[type="radio"] + label:active {
   background: white;
   border: 1px solid #4D5B9E;
   border-radius: 8px;
-  -webkit-user-select: none;    /* Safari */
-  -webkit-touch-callout: none;  /* iOS Safari */
-  -khtml-user-select: none;     /* Konqueror HTML */
-  -ms-user-select: none;        /* Internet Explorer/Edge */
-  -moz-user-select: none;       /* Old versions of Firefox */
-   user-select: none;           /* Non-prefixed version*/
 }
 
 .answer input:checked + label {
   background: #D6DBF5;
   border: 1px solid #D6DBF5;
+}
+
+.answers.show .answer label {
+  opacity: 0.5;
+}
+
+.answers.show .answer input:checked + label {
+  border: none;
+  background: #F8BCBC;
+  border: 1px solid #F8BCBC;
+}
+
+.answers.show .answer.correct input + label {
+  border: none;
+  background: #94D7A2;
+  border: 1px solid #94D7A2;
+  opacity: 1;
 }
 
 /* #endregion question */

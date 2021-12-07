@@ -6,6 +6,7 @@ import Question from "./Question";
 function Quiz() {
   // state: hasFinished, questions + answers, responses
   const [questions, setQuestions] = useState([])
+  const [hasFinished, setHasFinished] = useState(false);
 
   useEffect(() => {
     setQuestions(mockData.results.map(item => ({
@@ -24,6 +25,10 @@ function Quiz() {
       prevQuestions.map(question => question.id === questionId ? {...question, selected: answer} : question)
     ))
   }
+  
+  function handleSubmit() {
+    setHasFinished(prevHasFinished => !prevHasFinished);
+  }
 
   return (
     <div className="quiz">
@@ -35,11 +40,13 @@ function Quiz() {
           answers={item.answers}
           selected={item.selected}
           onAnswerSelected={handleAnswerSelected}
+          showAnswers={hasFinished}
+          answer={item.correctAnswer}
         />
       ))}
 
       <div className="quiz--actions">
-        <button className="quiz--button">
+        <button className="quiz--button" onClick={handleSubmit} disabled={questions.some(question => question.selected === null)}>
           Check Answers
         </button>
       </div>
