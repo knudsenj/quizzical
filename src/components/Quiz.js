@@ -15,8 +15,15 @@ function Quiz() {
       answers: [...item.incorrect_answers, item.correct_answer]
         .sort(() => Math.random() - 0.5)
         .map(answer => ({id: nanoid(), value: answer})),
+      selected: null,
     })))
   }, []);
+
+  function handleAnswerSelected(questionId, answer) {
+    setQuestions(prevQuestions => (
+      prevQuestions.map(question => question.id === questionId ? {...question, selected: answer} : question)
+    ))
+  }
 
   return (
     <div className="quiz">
@@ -26,6 +33,8 @@ function Quiz() {
           id={item.id}
           question={item.question} 
           answers={item.answers}
+          selected={item.selected}
+          onAnswerSelected={handleAnswerSelected}
         />
       ))}
 
