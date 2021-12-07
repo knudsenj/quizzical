@@ -2,6 +2,64 @@
   box-sizing: border-box;
 }
 
+html, body, #root, main {
+  height: 100%;
+}
+
 body {
   margin: 0;
+  background: #F5F7FB;
+  font-family: Karla, sans-serif;
+  color: #293264;
 }
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(./assets/yellow-blob.svg), url(./assets/blue-blob.svg);
+  background-position: left bottom, right top;
+  background-repeat: no-repeat;
+}
+
+button {
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 1px 1px 4px 3px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 0 0 4px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* #region start screen */
+.start {
+  max-width: 250px;
+  text-align: center;
+}
+
+.start--title {
+  font-size: 2rem;
+  margin: 0 0 4px;
+}
+
+.start--description {
+  font-family: Inter, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0 0 29px;
+}
+
+.start--button {
+  background: #4D5B9E;
+  color: #F5F7FB;
+  border: none;
+  border-radius: 15px;
+  height: 50px;
+  width: 200px;
+}
+
+/* #endregion start screen */
